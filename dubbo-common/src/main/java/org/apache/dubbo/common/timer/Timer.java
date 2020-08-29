@@ -27,10 +27,9 @@ import java.util.concurrent.TimeUnit;
 public interface Timer {
 
     /**
-     * Schedules the specified {@link TimerTask} for one-time execution after
-     * the specified delay.
+     * 提交一个定时任务（TimerTask），类似于向线程池提交任务
      *
-     * @return a handle which is associated with the specified task
+     * @return 返回关联的 Timeout 对象
      * @throws IllegalStateException      if this timer has been {@linkplain #stop() stopped} already
      * @throws RejectedExecutionException if the pending timeouts are too many and creating new timeout
      *                                    can cause instability in the system.
@@ -41,13 +40,12 @@ public interface Timer {
      * Releases all resources acquired by this {@link Timer} and cancels all
      * tasks which were scheduled but not executed yet.
      *
-     * @return the handles associated with the tasks which were canceled by
-     * this method
+     * @return 方法返回被取消的任务对应的Timeout集合
      */
     Set<Timeout> stop();
 
     /**
-     * the timer is stop
+     * 判断定时器是否停止
      *
      * @return true for stop
      */

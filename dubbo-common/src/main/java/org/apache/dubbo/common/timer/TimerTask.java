@@ -19,6 +19,7 @@ package org.apache.dubbo.common.timer;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 在 Dubbo 中，所有的定时任务都要继承TimerTask接口
  * A task which is executed after the delay specified with
  * {@link Timer#newTimeout(TimerTask, long, TimeUnit)} (TimerTask, long, TimeUnit)}.
  */

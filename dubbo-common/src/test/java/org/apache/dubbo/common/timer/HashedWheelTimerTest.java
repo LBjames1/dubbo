@@ -38,8 +38,10 @@ public class HashedWheelTimerTest {
     @Test
     public void newTimeout() throws InterruptedException {
         final Timer timer = newTimer();
+        // 每隔1s向时间轮添加任务。定时任务也是1s
         for (int i = 0; i < 10; i++) {
-            timer.newTimeout(new PrintTask(), 1, TimeUnit.SECONDS);
+            timer.newTimeout(new PrintTask(), 3, TimeUnit.SECONDS);
+            System.out.println("task" + i + "added into the timer");
             Thread.sleep(1000);
         }
         Thread.sleep(5000);
@@ -64,6 +66,7 @@ public class HashedWheelTimerTest {
     }
 
     private Timer newTimer() {
+        // 100ms间隔的时间轮
         return new HashedWheelTimer(
                 new NamedThreadFactory("dubbo-future-timeout", true),
                 100,
